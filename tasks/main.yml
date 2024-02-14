@@ -1,0 +1,19 @@
+---
+- name: Add Ingress-Nginx Helm repository
+  ansible.builtin.shell:
+    cmd: helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+  args:
+    executable: /bin/bash
+
+- name: Update Helm repositories
+  ansible.builtin.shell:
+    cmd: helm repo update
+  args:
+    executable: /bin/bash
+
+- name: Install nginx-ingress with Helm
+  ansible.builtin.shell:
+    cmd: helm install nginx-ingress ingress-nginx/ingress-nginx --set controller.hostPort.enabled=true --set controller.hostNetwork=true --set controller.service.type=ClusterIP --set controller.kind=DaemonSet
+  args:
+    executable: /bin/bash
+  
