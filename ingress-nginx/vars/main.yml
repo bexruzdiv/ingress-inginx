@@ -2,5 +2,5 @@
 # vars file for ingress-nginx
 nginx_ingress_controller_hostPort_enabled: true  #true or false
 nginx_ingress_controller_hostNetwork: true  #true or false
-nginx_ingress_controller_service_type: ClusterIP # ClusterIP or 
-nginx_ingress_controller_kind: DaemonSet
+nginx_ingress_controller_service_type: ClusterIP # ClusterIP or LoadBalancer
+nginx_ingress_controller_kind: DaemonSet #DaemonSet or Deployment
