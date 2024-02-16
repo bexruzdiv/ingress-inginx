@@ -13,7 +13,11 @@
 
 - name: Install nginx-ingress with Helm
   ansible.builtin.shell:
-    cmd: helm install nginx-ingress ingress-nginx/ingress-nginx --set controller.hostPort.enabled=true --set controller.hostNetwork=true --set controller.service.type=ClusterIP --set controller.kind=DaemonSet
+    cmd: helm install nginx-ingress ingress-nginx/ingress-nginx 
+        --set controller.hostPort.enabled={{ nginx_ingress_controller_hostPort_enabled }} 
+        --set controller.hostNetwork={{ nginx_ingress_controller_hostNetwork }} 
+        --set controller.service.type={{ nginx_ingress_controller_service_type }} 
+        --set controller.kind={{ nginx_ingress_controller_kind }}
   args:
     executable: /bin/bash
   
